@@ -88,6 +88,7 @@ def main():
 
             # NMS
             outputs = util.non_max_suppression(outputs, 0.001, 0.7)
+           
             for i, output in enumerate(outputs):
                 detections = output.clone()
                 util.scale(detections[:, :4], sample[i].shape[1:], shapes[0], shapes[1])
@@ -100,6 +101,7 @@ def main():
             outputs = bytetrack.update(numpy.array(boxes),
                                        numpy.array(confidences),
                                        numpy.array(object_classes))
+            print(len(outputs))
             if len(outputs) > 0:
                 boxes = outputs[:, :4]
                 identities = outputs[:, 4]
