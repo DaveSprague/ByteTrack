@@ -7,7 +7,7 @@ import torch
 from nets import nn
 from utils import util
 
-warnings.filterwarnings("ignore")
+# warnings.filterwarnings("ignore")
 
 
 def draw_line(image, x1, y1, x2, y2, index):
@@ -48,6 +48,7 @@ def main():
     # Check if camera opened successfully
     if not reader.isOpened():
         print("Error opening video stream or file")
+    
     fps = int(reader.get(cv2.CAP_PROP_FPS))
     bytetrack = nn.BYTETracker(fps)
     # Read until video is completed
